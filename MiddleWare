@@ -1,0 +1,20 @@
+const express = require('express');
+const app = express();
+
+
+// MiddleWare 
+const MiddleWare = (req, res, next) =>{
+   console.log('This is my middleware');
+   next();
+}
+
+
+app.get("/",(req, res)=>{
+   res.send("hello world");
+});
+app.get("/about",MiddleWare,(req, res)=>{
+   res.send("hello I am about");
+});
+app.listen(8000, ()=>{
+    console.log("Server is running");
+});
